@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 FixME Forums
+  p.lead Welcome to the FixMe forums, fix me if you can
+  hr
+  .row
+    if posts.length == 0
+      .col-xs-12
+        .h1(style='margin-top:0px;opacity:0.2') No recent posts
+    each post in posts
+      .col-sm-6
+        div.media
+          div.media-left
+            img.img-circle(src=post.user.profile.picture || post.user.gravatar(), style='height:35px; width:35px')
+          div.media-body
+            h2(style='margin-top:0px') #{post.user.profile.name}
+        p !{post.text}
+
+  if user
+    .row
+      br
+    .row
+      .col-sm-12
+        form(method='post' action='/posts')
+          div.form-group
+            label(for='comment')
+              h2 New Post
+            textarea.form-control(name='text', rows=10, cols=40, placeholder='Enter post details')
+            input(type='hidden', name='_csrf', value=_csrf)
+            br
+            input.btn.btn-default(type='submit', text='POST')
