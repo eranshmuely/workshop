@@ -65,7 +65,6 @@ public class CreateFile {
 	    && !strFileName.endsWith(strDisallowedExtenxion);
 
 
-		return true;
 	}
 
 	public static void main(String[] args) {
