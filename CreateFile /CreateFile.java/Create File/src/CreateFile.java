@@ -9,9 +9,18 @@ import java.util.Scanner;
 
 public class CreateFile {
 
-	public static final String strAllowedDirectory = "C:\\UserContent";
-	public static final String strDisallowedExtenxion = ".exe";
+	public static String strAllowedDirectory = "C:\\UserContent";
+	public static String strDisallowedExtension = ".exe";
 	public static String strDirectory, strFileName, strData;
+
+	static {
+		if (System.getProperty("os.name")=="Mac OS X") {
+			strAllowedDirectory = "/tmp/UserContent";
+			strDisallowedExtension = ".sh";
+		}
+	}
+
+
 
 	public static void collectUserInput() {
 
@@ -36,14 +45,21 @@ public class CreateFile {
 			writer.write(strData);
 			writer.close();
 		}
-		catch (IOException e) { giveError(e.getMessage()); }
-		finally				  { System.out.println(
-								"\nWrote " + strData.length() +
-								" bytes to " + file.getPath() +
-								"\nHave a nice day!"); }
+
+		catch (IOException e) {
+			emitError(e.getMessage());
+		}
+
+		finally {
+			System.out.println(
+			"\nWrote " + strData.length() +
+			" bytes to " + file.getPath() +
+			"\nHave a nice day!");
+		}
+
 	}
 
-	public static void giveError(String message) {
+	public static void emitError(String message) {
 
 		System.out.println("\n" + message);
 		System.exit(1);
@@ -52,27 +68,28 @@ public class CreateFile {
 
 	public static boolean securityCheckOK() {
 
-		/*=========================================================================*\
-		||																		   ||
-		||		YOUR CODE GOES HERE:											   ||
-		||																		   ||
-		||			1)Make sure strDirectory IS under the 'C:\UserContent' root	   ||
-		||			2)Make sure strFileName  IS NOT of the '.exe' extension        ||
-		||                                                                         ||
-		\*=========================================================================*/
+		/*==========================================================================*\
+		||																		   																		||
+		||		YOUR CODE GOES HERE:											   													||
+		||																		   																		||
+		||			1)Make sure strDirectory IS under strAllowedDirectory root	  		 	||
+		||			2)Make sure strFileName  IS NOT of strDisallowedExtension   	  		||
+		||                                                                         	||
+		\*==========================================================================*/
 
 		return true;
-	    
-
 
 	}
 
 	public static void main(String[] args) {
 
 		collectUserInput();
-		if 	(securityCheckOK()) writeFile();
-		else  					giveError("PLEASE DO NOT HACK US!!!");
-		System.exit(0);
+
+		if (securityCheckOK())
+			writeFile();
+		else
+			emitError("DO NOT HACK US!!!");
 
 	}
+
 }
