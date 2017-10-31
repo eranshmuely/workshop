@@ -80,7 +80,12 @@ app.use(expressValidator());
 app.use(session({
   resave: true,
   saveUninitialized: true,
-  secret: process.env.SESSION_SECRET
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    secure: false,
+    httpOnly: false,
+    sameSite: false
+  }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
