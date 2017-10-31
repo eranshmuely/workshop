@@ -69,12 +69,12 @@ public class CreateFile {
 	public static boolean securityCheckOK() {
 
 		/*==========================================================================*\
-		||																		   																		||
-		||		YOUR CODE GOES HERE:											   													||
-		||																		   																		||
-		||			1)Make sure strDirectory IS under strAllowedDirectory root	  		 	||
-		||			2)Make sure strFileName  IS NOT of strDisallowedExtension   	  		||
-		||                                                                         	||
+		||																																					||
+		||		YOUR CODE GOES HERE:																									||
+		||																																					||
+		||			1)Make sure strDirectory IS under strAllowedDirectory root					||
+		||			2)Make sure strFileName  IS NOT of strDisallowedExtension						||
+		||																																					||
 		\*==========================================================================*/
 
 		return true;
