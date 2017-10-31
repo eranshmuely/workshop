@@ -61,8 +61,8 @@ public class CreateFile {
 		||                                                                         ||
 		\*=========================================================================*/
 
-		return strDirectory.startsWith(strAllowedDirectory)
-	    && !strFileName.endsWith(strDisallowedExtenxion);
+		return true;
+	    
 
 
 	}
