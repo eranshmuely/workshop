@@ -14,7 +14,7 @@ public class CreateFile {
 	public static String strDirectory, strFileName, strData;
 
 	static {
-		if (System.getProperty("os.name")=="Mac OS X") {
+		if (System.getProperty("os.name").toLowerCase().indexOf("mac") >=0) {
 			strAllowedDirectory = "/tmp/UserContent";
 			strDisallowedExtension = ".sh";
 		}
